@@ -1,59 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 body{
     align-content: center;
     font-weight: 900;
     width: 980px;
     margin: 0 auto;
     background-color: #1f1f1f;
+    font-family: roboto;
 }
 
 #container{
+    display: flex;
+    justify-content: center;
+}
+
+#grid{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
-    text-align: center;
-    width: 400px;
     margin-top: 100px;
 }
 
 .display { grid-area: 1 / 1 / 2 / 5; }
-.right-column { grid-area: 2 / 4 / 7 / 5; }
-.left-column { grid-area: 2 / 1 / 7 / 4; }
-.divide { grid-area: 2 / 4 / 3 / 5; }
-.multiply { grid-area: 3 / 4 / 4 / 5; }
-.subtract { grid-area: 4 / 4 / 5 / 5; }
-.add { grid-area: 5 / 4 / 6 / 5; }
-.equal { grid-area: 6 / 4 / 7 / 5; }
-.clear { grid-area: 2 / 1 / 3 / 2; }
-.plus-minus { grid-area: 2 / 2 / 3 / 3; }
-.percentages { grid-area: 2 / 3 / 3 / 4; }
-.seven { grid-area: 3 / 1 / 4 / 2; }
-.eight { grid-area: 3 / 2 / 4 / 3; }
-.nine { grid-area: 3 / 3 / 4 / 4; }
-.four { grid-area: 4 / 1 / 5 / 2; }
-.five { grid-area: 4 / 2 / 5 / 3; }
-.six { grid-area: 4 / 3 / 5 / 4; }
-.one { grid-area: 5 / 1 / 6 / 2; }
-.two { grid-area: 5 / 2 / 6 / 3; }
-.three { grid-area: 5 / 3 / 6 / 4; }
+.right-column { grid-area: 2 / 4 / 7 / 4; }
+.left-column { grid-area: 2 / 1 / 7 / 3; }
+.divide { grid-area: 2 / 4 / 3 / 4; }
+.multiply { grid-area: 3 / 4 / 4 / 4; }
+.subtract { grid-area: 4 / 4 / 5 / 4; }
+.add { grid-area: 5 / 4 / 6 / 4; }
+.equal { grid-area: 6 / 4 / 7 / 4; }
+.clear { grid-area: 2 / 1 / 3 / 1; }
+.plus-minus { grid-area: 2 / 2 / 3 / 2; }
+.percentages { grid-area: 2 / 3 / 3 / 3; }
+.seven { grid-area: 3 / 1 / 4 / 1; }
+.eight { grid-area: 3 / 2 / 4 / 2; }
+.nine { grid-area: 3 / 3 / 4 / 3; }
+.four { grid-area: 4 / 1 / 5 / 1; }
+.five { grid-area: 4 / 2 / 5 / 2; }
+.six { grid-area: 4 / 3 / 5 / 3; }
+.one { grid-area: 5 / 1 / 6 / 1; }
+.two { grid-area: 5 / 2 / 6 / 2; }
+.three { grid-area: 5 / 3 / 6 / 3; }
 .zero { grid-area: 6 / 1 / 7 / 3; }
-.period { grid-area: 6 / 3 / 7 / 4; }
+.period { grid-area: 6 / 3 / 7 / 3; }
 
-#container > button {
+#grid > button {
     border-radius: 50%;
     border: none;
-    padding: 30px;
-    font-size: 30px;
-    height: 100px;
-    width: 100px;
+    padding: 10px;
+    font-size: 32px;
+    height: 80px;
+    width: 80px;
 }
 
-#container > .zero{
+#grid > button:hover {
+box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.2);
+transition: 0.5s;
+}
+
+#grid > .zero{
     border-radius: 50px;
     width: 100%;
     text-align: left;
-    padding-left: 40px;
+    padding-left: 30px;
+}
+
+.display{
+    color: #ffffff;
+    font-size: 60px;
+    text-align: right;
+    padding-right: 25px;
 }
 
 .light-gray{
