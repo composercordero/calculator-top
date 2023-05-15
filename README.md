@@ -1,2 +1,2 @@
-# Calculator-TOP
+# calculator-top
 Javascript Foundations - TOP
