@@ -90,3 +90,8 @@ transition: 0.5s;
     background-color: #ff970f;
     color: #ffffff;
 }
+
+.highlight{
+    background-color: #ffffff;
+    color: #ff970f;
+}

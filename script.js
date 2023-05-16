@@ -1,3 +1,11 @@
+//variables
+
+let firstNumber;
+let operator;
+let secondNumber;
+let currentOperation = null
+let shouldResetScreen = false
+
 //buttons and display
 
 const clearBtn = document.getElementById('clear');
@@ -20,42 +28,60 @@ const percentage = function(a) {return a/100};
 
 //Actions
 clearBtn.addEventListener('click', clearAll);
-// pointBtn.addEventListener('click', appendNumber(point.textContent));
-equalBtn.addEventListener('click', result);
+pointBtn.addEventListener('click', appendPoint(point.textContent));
+equalBtn.addEventListener('click', evaluate);
 plusMinusBtn.addEventListener('click', plusMinus);
 percentagesBtn.addEventListener('click', percentage);
-numberBtn.forEach((button) => button.addEventListener('click', () => appendNumber(button.textContent))
-)
-
-operatorBtn.forEach((button) => button.addEventListener('click', () => appendOperator(button.textContent))
-)
-
-//variables
-
-let firstNumber;
-let operator;
-let secondNumber;
+numberBtn.forEach((button) => button.addEventListener('click', () => appendNumber(button.textContent)))
+operatorBtn.forEach((button) => button.addEventListener('click', () => setOperation(button.textContent, button.className += ' highlight')))
 
 //display function
 
 function appendNumber(a) {
-    if (displayScreen.textContent === '0') {displayScreen.textContent = a
-    }else{
-        displayScreen.textContent += a
-  }}
-
-function appendOperator(a) {
-if (displayScreen.textContent === '0') {displayScreen.textContent = a
-}else{
+    if (displayScreen.textContent === '0' || shouldResetScreen)
+    resetScreen() 
     displayScreen.textContent += a
-}}
+  }
+
+function appendPoint(a) {
+}
+
+function resetScreen() {
+    displayScreen.textContent = ''
+    shouldResetScreen = false
+  }
+
+function setOperation (operator){
+    if (currentOperation !== null) evaluate()
+    firstNumber = displayScreen.textContent;
+    currentOperation = operator
+    let firstHalf = `${firstNumber} ${currentOperation}`;
+    shouldResetScreen = true
+}
+
+function evaluate(){
+    if (currentOperation === null || shouldResetScreen) return
+    secondNumber = displayScreen.textContent
+    displayScreen.textContent = operate(currentOperation, firstNumber, secondNumber);
+}
+
+function operate (operator, a, b){
+    a = Number(a)
+    b = Number(b)
+
+    switch(operator) {
+        case '+': return add(a,b)
+        case '-': return subtract(a,b)
+        case 'x': return multiply(a,b)
+        case '/': return divide(a,b)
+        default:
+            return null
+    }
+}
+
 
 function clearAll(){
     console.log('clear')
-}
-
-function result(){
-    console.log('result')
 }
 
 function plusMinus(){
