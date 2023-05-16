@@ -24,14 +24,14 @@ const add = function(a,b) {return a + b};
 const subtract = function(a,b) {return a - b};
 const multiply = function(a,b) {return a * b};
 const divide = function(a,b) {return a / b};
-const percentage = function(a) {return a/100};
+const percentage = function(a) {displayScreen.textContent = a/100};
 
 //Actions
 clearBtn.addEventListener('click', clearAll);
 pointBtn.addEventListener('click', appendPoint(point.textContent));
 equalBtn.addEventListener('click', evaluate);
 plusMinusBtn.addEventListener('click', () => plusMinus(displayScreen.textContent));
-percentagesBtn.addEventListener('click', percentage);
+percentagesBtn.addEventListener('click', () => percentage(displayScreen.textContent));
 numberBtn.forEach((button) => button.addEventListener('click', () => appendNumber(button.textContent)))
 operatorBtn.forEach((button) => button.addEventListener('click', () => setOperation(button.textContent, button.className += ' highlight')))
 
