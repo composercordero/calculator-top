@@ -30,7 +30,7 @@ const percentage = function(a) {return a/100};
 clearBtn.addEventListener('click', clearAll);
 pointBtn.addEventListener('click', appendPoint(point.textContent));
 equalBtn.addEventListener('click', evaluate);
-plusMinusBtn.addEventListener('click', plusMinus);
+plusMinusBtn.addEventListener('click', () => plusMinus(displayScreen.textContent));
 percentagesBtn.addEventListener('click', percentage);
 numberBtn.forEach((button) => button.addEventListener('click', () => appendNumber(button.textContent)))
 operatorBtn.forEach((button) => button.addEventListener('click', () => setOperation(button.textContent, button.className += ' highlight')))
@@ -63,6 +63,7 @@ function evaluate(){
     if (currentOperation === null || shouldResetScreen) return
     secondNumber = displayScreen.textContent
     displayScreen.textContent = operate(currentOperation, firstNumber, secondNumber);
+    operatorBtn.forEach((button) => button.className = 'orange')
 }
 
 function operate (operator, a, b){
@@ -73,17 +74,20 @@ function operate (operator, a, b){
         case '+': return add(a,b)
         case '-': return subtract(a,b)
         case 'x': return multiply(a,b)
-        case '/': return divide(a,b)
+        case '÷':   if (b === 0) return null
+                    else return divide(a, b)
         default:
             return null
     }
 }
 
-
 function clearAll(){
-    console.log('clear')
+    displayScreen.textContent = '0'
+    firstNumber = ''
+    secondNumber = ''
+    currentOperation = null
 }
 
-function plusMinus(){
-    console.log('plusMinus')
+function plusMinus(number){
+    displayScreen.textContent = number * (-1)
 }
